@@ -2,12 +2,23 @@ my_graph = {
     'A': [('B', 5), ('C', 3), ('E', 11)],
     'B': [('A', 5), ('C', 1), ('F', 2)],
     'C': [('A', 3), ('B', 1), ('D', 1), ('E', 5)],
-    'D': [('C',1 ), ('E', 9), ('F', 3)],
+    'D': [('C', 1), ('E', 9), ('F', 3)],
     'E': [('A', 11), ('C', 5), ('D', 9)],
     'F': [('B', 2), ('D', 3)]
 }
 
-def shortest_path(graph, start, target = ''):
+def shortest_path(graph, start, target=''):
+    """
+    Finds the shortest path from a start node to a target node in a graph using Dijkstra's algorithm.
+
+    Args:
+        graph (dict): The graph represented as a dictionary of nodes and their neighbors with associated distances.
+        start (str): The starting node for the path.
+        target (str): The optional target node. If provided, the function prints the shortest path to this node.
+
+    Returns:
+        tuple: A tuple containing dictionaries of distances and paths.
+    """
     unvisited = list(graph)
     distances = {node: 0 if node == start else float('inf') for node in graph}
     paths = {node: [] for node in graph}
